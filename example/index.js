@@ -37,6 +37,11 @@ var App = React.createClass({
     render: function() {
         return D.div(
             null,
+            D.span(
+                null,
+                moment(this.state.time * 1000).format('HH:mm:ss')
+            ),
+            D.span({ className: 'muted' }, ' vs '),
             transitiveNumber(
                 null,
                 moment(this.state.time * 1000).format('HH:mm:ss')
