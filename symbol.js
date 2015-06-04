@@ -12,9 +12,15 @@ var Symbol = React.createClass({
         };
     },
     componentWillReceiveProps: function(nextProps) {
+        var decrementing = isDecrementing(this.props.symbol, nextProps.symbol);
+
         this.setState({
             previous: this.props.symbol,
-            decrementing: isDecrementing(this.props.symbol, nextProps.symbol)
+            decrementing: (
+                this.props.inverted ?
+                    !decrementing :
+                    decrementing
+            )
         });
     },
     shouldComponentUpdate: function(nextProps) {

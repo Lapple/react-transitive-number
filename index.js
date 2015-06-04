@@ -11,6 +11,11 @@ var TransitiveNumber = React.createClass({
         };
     },
     render: function() {
+        var value = this.props.children.toString();
+
+        // Invert animation direction when negative number is supplied.
+        var inverted = value[0] === '-';
+
         return D.span(
             {
                 className: this.props.className,
@@ -18,12 +23,12 @@ var TransitiveNumber = React.createClass({
                     whiteSpace: 'pre'
                 }
             },
-            this.props.children
-                .toString()
+            value
                 .split('')
                 .map(function(s, index) {
                     return symbol({
                         symbol: s,
+                        inverted: inverted,
                         key: index
                     });
                 })
