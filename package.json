@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "watch-example": "watchify -o example/index.compiled.js example/index.js -v",
-    "compile-example": "browserify -o example/index.compiled.js example/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile-example": "browserify -o example/index.compiled.js example/index.js"
   },
   "keywords": [
     "react-component",
@@ -16,6 +15,10 @@
     "animation"
   ],
   "author": "Aziz Yuldoshev",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Lapple/react-transitive-number.git"
+  },
   "license": "MIT",
   "peerDependencies": {
     "react": "^0.13.0"
