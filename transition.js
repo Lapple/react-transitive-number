@@ -19,7 +19,7 @@ var Transition = React.createClass({
     getAppearance: function() {
         return {
             display: 'inline-block',
-            transition: 'transform 0.3s, opacity 0.3s, visibility 0.3s',
+            transition: 'transform 0.2s, opacity 0.2s, visibility 0.2s',
 
             position: (
                 this.props.out ?
