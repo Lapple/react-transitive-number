@@ -46,11 +46,11 @@ var Transition = React.createClass({
     },
     getTransform: function() {
         if (this.props.out) {
-            return 'translateY(60%)';
+            return translateY(this.props.up);
         }
 
         if (!this.state.in) {
-            return 'translateY(-60%)';
+            return translateY(!this.props.up);
         }
 
         return null;
@@ -86,3 +86,6 @@ function caf(timer) {
     }
 }
 
+function translateY(isUp) {
+    return isUp ? 'translateY(-60%)' : 'translateY(60%)';
+}

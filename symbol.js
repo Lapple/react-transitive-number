@@ -6,11 +6,15 @@ var transition = React.createFactory(Transition);
 
 var Symbol = React.createClass({
     getInitialState: function() {
-        return { previous: null };
+        return {
+            previous: null,
+            decrementing: false
+        };
     },
-    componentWillReceiveProps: function() {
+    componentWillReceiveProps: function(nextProps) {
         this.setState({
-            previous: this.props.symbol
+            previous: this.props.symbol,
+            decrementing: nextProps.symbol < this.props.symbol
         });
     },
     shouldComponentUpdate: function(nextProps) {
@@ -30,6 +34,7 @@ var Symbol = React.createClass({
     renderCurrent: function() {
         return transition({
             value: this.props.symbol,
+            up: this.state.decrementing,
             key: this.props.symbol
         });
     },
@@ -38,6 +43,7 @@ var Symbol = React.createClass({
             return transition({
                 value: this.state.previous,
                 out: true,
+                up: this.state.decrementing,
                 key: this.state.previous
             });
         }
