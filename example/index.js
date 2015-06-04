@@ -37,18 +37,20 @@ var App = React.createClass({
     render: function() {
         return D.div(
             null,
-            transitiveNumber({
-                value: moment(this.state.time * 1000).format('HH:mm:ss')
-            }),
+            transitiveNumber(
+                null,
+                moment(this.state.time * 1000).format('HH:mm:ss')
+            ),
             this.renderCounter()
         );
     },
     renderCounter: function() {
         return D.div(
             { className: 'counter' },
-            transitiveNumber({
-                value: this.state.count
-            }),
+            transitiveNumber(
+                null,
+                this.state.count
+            ),
             ' points',
             D.button(
                 {

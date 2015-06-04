@@ -18,7 +18,7 @@ var TransitiveNumber = React.createClass({
                     whiteSpace: 'pre'
                 }
             },
-            this.props.value
+            this.props.children
                 .toString()
                 .split('')
                 .map(function(s, index) {
