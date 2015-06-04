@@ -4,7 +4,10 @@
     <title>react-transitive-number example</title>
     <style type="text/css">
         body {
-            font: 16px/1.4 sans-serif;
+            padding: 40px;
+
+            font: 18px/1.4 sans-serif;
+            text-align: center;
         }
 
         .muted {
@@ -12,15 +15,30 @@
         }
 
         .counter {
-            margin: 10px 0;
+            margin: 10px auto;
+            padding-top: 10px;
+            max-width: 200px;
+
+            border-top: 1px solid #ddd;
         }
 
         .counter__button {
             display: inline-block;
             width: 30px;
-            font-family: monospace;
 
+            font-family: monospace;
+            border: 1px solid #ccc;
+            background: #fff;
             cursor: pointer;
+            outline: none;
+        }
+
+        .counter__button:focus {
+            background: #eee;
+        }
+
+        .counter__button_first {
+            border-right: 0;
         }
     </style>
 </head>

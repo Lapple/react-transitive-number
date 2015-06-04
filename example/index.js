@@ -52,14 +52,20 @@ var App = React.createClass({
     renderCounter: function() {
         return D.div(
             { className: 'counter' },
+            D.span(
+                null,
+                this.state.count + ' points'
+            ),
+            D.span({ className: 'muted' }, ' vs '),
             transitiveNumber(
                 null,
                 this.state.count
             ),
             ' points',
+            D.br(),
             D.button(
                 {
-                    className: 'counter__button',
+                    className: 'counter__button counter__button_first',
                     type: 'button',
                     onClick: this.incrementCount
                 },
