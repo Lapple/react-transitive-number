@@ -1,0 +1,28 @@
+{
+  "name": "react-transitive-number",
+  "version": "1.0.0",
+  "description": "React component to apply transition effect to numeric strings, a la old Groupon timers",
+  "main": "index.js",
+  "scripts": {
+    "watch-example": "watchify -o example/index.compiled.js example/index.js -v",
+    "compile-example": "browserify -o example/index.compiled.js example/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-component",
+    "react",
+    "transition",
+    "number",
+    "animation"
+  ],
+  "author": "Aziz Yuldoshev",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^0.13.0"
+  },
+  "devDependencies": {
+    "browserify": "10.2.3",
+    "moment": "2.10.3",
+    "watchify": "3.2.1"
+  }
+}
