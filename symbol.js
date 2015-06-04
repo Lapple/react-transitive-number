@@ -14,7 +14,7 @@ var Symbol = React.createClass({
     componentWillReceiveProps: function(nextProps) {
         this.setState({
             previous: this.props.symbol,
-            decrementing: nextProps.symbol < this.props.symbol
+            decrementing: isDecrementing(this.props.symbol, nextProps.symbol)
         });
     },
     shouldComponentUpdate: function(nextProps) {
@@ -53,3 +53,15 @@ var Symbol = React.createClass({
 });
 
 module.exports = Symbol;
+
+function isDecrementing(a, b) {
+    var numberA = Number(a);
+    var numberB = Number(b);
+
+    // Special case when going from 9 or 6 to 0.
+    if (numberB === 0 && numberA !== 1) {
+        return false;
+    } else {
+        return numberB < numberA;
+    }
+}
