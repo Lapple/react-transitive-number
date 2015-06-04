@@ -6,12 +6,15 @@ var Transition = React.createClass({
         return { in: false };
     },
     componentDidMount: function() {
-        this._timeout = setTimeout(this.tada, 0);
+        this._timeout = raf(this.tada);
     },
     componentWillUnmount: function() {
-        clearTimeout(this._timeout);
+        caf(this._timeout);
     },
     tada: function() {
+        // Force element reflow to ensure correct animation in FF.
+        React.findDOMNode(this).offsetWidth;
+
         this.setState({
             in: true
         });
@@ -66,4 +69,20 @@ var Transition = React.createClass({
 });
 
 module.exports = Transition;
+
+function raf(fn) {
+    if (typeof window.requestAnimationFrame === 'function') {
+        return window.requestAnimationFrame(fn);
+    } else {
+        return setTimeout(fn, 0);
+    }
+}
+
+function caf(timer) {
+    if (typeof window.cancelAnimationFrame === 'function') {
+        return window.cancelAnimationFrame(timer);
+    } else {
+        return clearTimeout(timer);
+    }
+}
 
