@@ -37,47 +37,88 @@ var App = React.createClass({
     render: function() {
         return D.div(
             null,
-            D.span(
-                null,
-                moment(this.state.time * 1000).format('HH:mm:ss')
-            ),
-            D.span({ className: 'muted' }, ' vs '),
-            transitiveNumber(
-                null,
-                moment(this.state.time * 1000).format('HH:mm:ss')
-            ),
-            this.renderCounter()
-        );
-    },
-    renderCounter: function() {
-        return D.div(
-            { className: 'counter' },
-            D.span(
-                null,
-                this.state.count + ' points'
-            ),
-            D.span({ className: 'muted' }, ' vs '),
-            transitiveNumber(
-                null,
-                this.state.count
-            ),
-            ' points',
-            D.br(),
-            D.button(
-                {
-                    className: 'counter__button counter__button_first',
-                    type: 'button',
-                    onClick: this.incrementCount
-                },
-                '+'
-            ),
-            D.button(
-                {
-                    className: 'counter__button',
-                    type: 'button',
-                    onClick: this.decrementCount
-                },
-                '-'
+            D.div(
+                { className: 'comparison' },
+                D.div(
+                    { className: 'comparison__cell comparison__cell_head' },
+                    'Plain HTML'
+                ),
+                D.div(
+                    { className: 'comparison__cell comparison__cell_head' },
+                    'With ',
+                    D.code(null, 'TransitiveNumber')
+                ),
+                D.div(
+                    { className: 'comparison__cell comparison__cell_first' },
+                    D.div(
+                        { className: 'timer' },
+                        D.span({ className: 'timer__dot' }),
+                        D.span(
+                            null,
+                            moment(this.state.time * 1000).format('HH:mm:ss')
+                        )
+                    )
+                ),
+                D.div(
+                    { className: 'comparison__cell' },
+                    D.div(
+                        { className: 'timer' },
+                        D.span({ className: 'timer__dot' }),
+                        transitiveNumber(
+                            null,
+                            moment(this.state.time * 1000).format('HH:mm:ss')
+                        )
+                    )
+                ),
+                D.div(
+                    { className: 'comparison__cell comparison__cell_first' },
+                    D.div(
+                        { className: 'counter' },
+                        D.button(
+                            {
+                                className: 'counter__button counter__button_down',
+                                type: 'button',
+                                onClick: this.decrementCount
+                            }
+                        ),
+                        D.span(
+                            null,
+                            this.state.count + ' points'
+                        ),
+                        D.button(
+                            {
+                                className: 'counter__button counter__button_up',
+                                type: 'button',
+                                onClick: this.incrementCount
+                            }
+                        )
+                    )
+                ),
+                D.div(
+                    { className: 'comparison__cell' },
+                    D.div(
+                        { className: 'counter' },
+                        D.button(
+                            {
+                                className: 'counter__button counter__button_down',
+                                type: 'button',
+                                onClick: this.decrementCount
+                            }
+                        ),
+                        transitiveNumber(
+                            null,
+                            this.state.count
+                        ),
+                        ' points',
+                        D.button(
+                            {
+                                className: 'counter__button counter__button_up',
+                                type: 'button',
+                                onClick: this.incrementCount
+                            }
+                        )
+                    )
+                )
             )
         );
     }

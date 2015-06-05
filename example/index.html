@@ -10,35 +10,101 @@
             text-align: center;
         }
 
-        .muted {
-            color: #999;
+        .comparison {
+            width: 500px;
+            margin: 20px auto;
+        }
+
+        .comparison__cell {
+            display: inline-block;
+            width: 50%;
+            height: 70px;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+
+            border: 1px solid #ddd;
+        }
+
+        .comparison__cell_first {
+            border-right: none;
+        }
+
+        .comparison__cell_head {
+            height: auto;
+
+            font-size: 0.8em;
+            text-align: left;
+            color: #666;
+            border-color: transparent;
+        }
+
+        .timer, .counter {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+        }
+
+        .timer {
+            font-size: 1.6em;
+        }
+
+        .timer__dot {
+            display: inline-block;
+            margin-right: 6px;
+
+            color: #fcd352;
+            transform: translateY(-2px);
+        }
+
+        .timer__dot:before {
+            content: '●';
         }
 
         .counter {
-            margin: 10px auto;
-            padding-top: 10px;
-            max-width: 200px;
-
-            border-top: 1px solid #ddd;
+            font: 0.8em 'Lucida Grande', sans-serif;
+            color: #369;
         }
 
         .counter__button {
             display: inline-block;
-            width: 30px;
+            width: 15px;
+            padding: 0;
 
             font-family: monospace;
-            border: 1px solid #ccc;
+            border: none;
             background: #fff;
             cursor: pointer;
             outline: none;
+            border-radius: 3px;
+            transform: translateY(-1px);
         }
 
         .counter__button:focus {
             background: #eee;
         }
 
-        .counter__button_first {
-            border-right: 0;
+        .counter__button_up {
+            margin-left: 6px;
+
+            color: #080;
+        }
+
+        .counter__button_up:before {
+            content: '▲';
+        }
+
+        .counter__button_down {
+            margin-right: 6px;
+
+            color: #d00;
+            transform: translateY(-1px) rotate(180deg);
+        }
+
+        .counter__button_down:before {
+            content: '▲';
         }
     </style>
 </head>
