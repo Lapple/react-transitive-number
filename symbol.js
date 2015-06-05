@@ -64,9 +64,9 @@ function isDecrementing(a, b) {
     var numberA = Number(a);
     var numberB = Number(b);
 
-    // Special case when going from 9 or 6 to 0.
+    // Special case when going from 9 or 6 to 0 (and back).
     if (Math.abs(numberB - numberA) !== 1) {
-        return false;
+        return numberA === 0;
     } else {
         return numberB < numberA;
     }
