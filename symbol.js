@@ -49,18 +49,32 @@ var Symbol = React.createClass({
                     position: 'relative'
                 }
             },
-            this.renderCurrent(),
-            this.renderPrevious()
+            // Have to render this transparent spacer span to mitigate the issue
+            // when Safari would not animate transition if changing `position`
+            // from `absolute` to `static`.
+            this.renderSpacer(),
+            this.renderTransitionIn(),
+            this.renderTransitionOut()
         );
     },
-    renderCurrent: function() {
+    renderSpacer: function() {
+        return D.span(
+            {
+                style: {
+                    visibility: 'hidden'
+                }
+            },
+            this.props.symbol
+        );
+    },
+    renderTransitionIn: function() {
         return transition({
             value: this.props.symbol,
             up: this.state.decrementing,
             key: this.props.symbol
         });
     },
-    renderPrevious: function() {
+    renderTransitionOut: function() {
         if (this.state.previous !== null) {
             return transition({
                 value: this.state.previous,

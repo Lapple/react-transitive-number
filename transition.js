@@ -20,28 +20,29 @@ var Transition = React.createClass({
         });
     },
     getAppearance: function() {
+        var transform = this.getTransform();
+
         return {
             display: 'inline-block',
-            transition: 'transform 0.2s, opacity 0.2s, visibility 0.2s',
 
-            position: (
-                this.props.out ?
-                    'absolute' :
-                    'static'
-            ),
+            // Can't dynamically change `position` from `absolute` to `static` -
+            // it will break transition animation in Safari.
+            position: 'absolute',
             left: 0,
 
-            transform: this.getTransform(),
+            WebkitTransition: '-webkit-transform 0.2s, opacity 0.2s',
+            transition: 'transform 0.2s, opacity 0.2s',
+
+            WebkitTransform: transform,
+            transform: transform,
+
             opacity: (
                 this.isHidden() ?
                     0 :
                     1
             ),
-            visibility: (
-                this.isHidden() ?
-                    'hidden' :
-                    'visible'
-            )
+
+            pointerEvents: 'none'
         };
     },
     getTransform: function() {
@@ -53,7 +54,8 @@ var Transition = React.createClass({
             return translateY(!this.props.up);
         }
 
-        return null;
+        // This has better text rendering in FF than simply `none`.
+        return 'translateY(0)';
     },
     isHidden: function() {
         return this.props.out || !this.state.in;
