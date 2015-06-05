@@ -11,20 +11,36 @@ var Symbol = React.createClass({
             decrementing: false
         };
     },
-    componentWillReceiveProps: function(nextProps) {
-        var decrementing = isDecrementing(this.props.symbol, nextProps.symbol);
-
-        this.setState({
-            previous: this.props.symbol,
-            decrementing: (
-                this.props.inverted ?
-                    !decrementing :
-                    decrementing
-            )
-        });
+    componentDidMount: function() {
+        React.findDOMNode(this).addEventListener('transitionend', this.removePrevious);
     },
-    shouldComponentUpdate: function(nextProps) {
-        return nextProps.symbol !== this.props.symbol;
+    componentWillUnmount: function() {
+        React.findDOMNode(this).removeEventListener('transitionend', this.removePrevious);
+    },
+    componentWillReceiveProps: function(nextProps) {
+        if (nextProps.symbol !== this.props.symbol) {
+            var decrementing = isDecrementing(this.props.symbol, nextProps.symbol);
+
+            this.setState({
+                previous: this.props.symbol,
+                decrementing: (
+                    this.props.inverted ?
+                        !decrementing :
+                        decrementing
+                )
+            });
+        }
+    },
+    shouldComponentUpdate: function(nextProps, nextState) {
+        return (
+            nextProps.symbol !== this.props.symbol ||
+            nextState.previous !== this.state.previous
+        );
+    },
+    removePrevious: function() {
+        this.setState({
+            previous: null
+        });
     },
     render: function() {
         return D.span(
