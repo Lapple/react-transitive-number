@@ -4,6 +4,9 @@ React component to apply transition effect to numeric strings, a la old Groupon 
 
 ![Demo](http://i.imgur.com/OJGsoig.gif)
 
+- [Live demo](http://lapple.github.io/react-transitive-number/)
+- [Example](https://github.com/Lapple/react-transitive-number/blob/master/example/index.js)
+
 ### Usage
 
 ```jsx
