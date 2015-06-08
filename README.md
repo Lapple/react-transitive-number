@@ -29,6 +29,11 @@ module.exports = React.createClass({
 
 Text value that should be converted.
 
+#### props.enableInitialAnimation
+
+Boolean value to toggle animation when component is mounted first time. Defaults
+to `false`.
+
 #### props.className
 
 Optional class name.

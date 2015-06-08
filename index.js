@@ -7,7 +7,8 @@ var symbol = React.createFactory(Symbol);
 var TransitiveNumber = React.createClass({
     getDefaultProps: function() {
         return {
-            className: null
+            className: null,
+            enableInitialAnimation: false
         };
     },
     render: function() {
@@ -29,9 +30,10 @@ var TransitiveNumber = React.createClass({
                     return symbol({
                         symbol: s,
                         inverted: inverted,
+                        enableInitialAnimation: this.props.enableInitialAnimation,
                         key: index
                     });
-                })
+                }, this)
         );
     }
 });

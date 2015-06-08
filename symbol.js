@@ -8,7 +8,8 @@ var Symbol = React.createClass({
     getInitialState: function() {
         return {
             previous: null,
-            decrementing: false
+            decrementing: false,
+            initialRender: true
         };
     },
     componentDidMount: function() {
@@ -27,7 +28,8 @@ var Symbol = React.createClass({
                     this.props.inverted ?
                         !decrementing :
                         decrementing
-                )
+                ),
+                initialRender: false
             });
         }
     },
@@ -70,7 +72,12 @@ var Symbol = React.createClass({
     renderTransitionIn: function() {
         return transition({
             value: this.props.symbol,
-            up: this.state.decrementing,
+            goingUp: this.state.decrementing,
+            animateEntrance: (
+                this.state.initialRender ?
+                    this.props.enableInitialAnimation :
+                    true
+            ),
             key: this.props.symbol
         });
     },
@@ -78,8 +85,8 @@ var Symbol = React.createClass({
         if (this.state.previous !== null) {
             return transition({
                 value: this.state.previous,
+                goingUp: this.state.decrementing,
                 out: true,
-                up: this.state.decrementing,
                 key: this.state.previous
             });
         }

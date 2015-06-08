@@ -3,7 +3,13 @@ var D = React.DOM;
 
 var Transition = React.createClass({
     getInitialState: function() {
-        return { in: false };
+        return {
+            in: (
+                this.props.out ?
+                    true :
+                    !this.props.animateEntrance
+            )
+        };
     },
     componentDidMount: function() {
         this._timeout = raf(this.tada);
@@ -47,11 +53,11 @@ var Transition = React.createClass({
     },
     getTransform: function() {
         if (this.props.out) {
-            return translateY(this.props.up);
+            return translateY(this.props.goingUp);
         }
 
         if (!this.state.in) {
-            return translateY(!this.props.up);
+            return translateY(!this.props.goingUp);
         }
 
         // This has better text rendering in FF than simply `none`.
