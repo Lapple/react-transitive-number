@@ -1,5 +1,6 @@
 var React = require('react');
 var D = React.DOM;
+var findDOMNode = require('react-dom').findDOMNode
 
 var Transition = require('./transition');
 var transition = React.createFactory(Transition);
@@ -13,10 +14,10 @@ var Symbol = React.createClass({
         };
     },
     componentDidMount: function() {
-        React.findDOMNode(this).addEventListener('transitionend', this.removePrevious);
+        findDOMNode(this).addEventListener('transitionend', this.removePrevious);
     },
     componentWillUnmount: function() {
-        React.findDOMNode(this).removeEventListener('transitionend', this.removePrevious);
+        findDOMNode(this).removeEventListener('transitionend', this.removePrevious);
     },
     componentWillReceiveProps: function(nextProps) {
         if (nextProps.symbol !== this.props.symbol) {
