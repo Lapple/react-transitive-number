@@ -21,7 +21,8 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "react": "^0.13.0"
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
   },
   "devDependencies": {
     "browserify": "10.2.3",

@@ -1,5 +1,6 @@
 var React = require('react');
 var D = React.DOM;
+var findDOMNode = require('react-dom').findDOMNode
 
 var Transition = React.createClass({
     getInitialState: function() {
@@ -19,7 +20,7 @@ var Transition = React.createClass({
     },
     tada: function() {
         // Force element reflow to ensure correct animation in FF.
-        React.findDOMNode(this).offsetWidth;
+        findDOMNode(this).offsetWidth;
 
         this.setState({
             in: true
