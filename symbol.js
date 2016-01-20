@@ -49,7 +49,8 @@ var Symbol = React.createClass({
         return D.span(
             {
                 style: {
-                    position: 'relative'
+                    position: 'relative',
+                    display: 'inline-block'
                 }
             },
             // Have to render this transparent spacer span to mitigate the issue
