@@ -1,4 +1,5 @@
 var React = require('react');
+var render = require('react-dom').render;
 var moment = require('moment');
 
 var D = React.DOM;
@@ -128,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var app = React.createFactory(App);
 
     setInterval(function() {
-        React.render(
+        render(
             app(),
             document.getElementById('app')
         );
