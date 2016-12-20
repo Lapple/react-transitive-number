@@ -62,7 +62,7 @@ var Transition = React.createClass({
         }
 
         // This has better text rendering in FF than simply `none`.
-        return 'translateY(0)';
+        return 'translateY(0) translateZ(0)';
     },
     isHidden: function() {
         return this.props.out || !this.state.in;
@@ -96,5 +96,5 @@ function caf(timer) {
 }
 
 function translateY(isUp) {
-    return isUp ? 'translateY(-60%)' : 'translateY(60%)';
+    return 'translateY(' + (isUp ? '-' : '') + '60%) translateZ(0)';
 }
