@@ -1,8 +1,9 @@
 var React = require('react');
 var D = React.DOM;
 var findDOMNode = require('react-dom').findDOMNode
+var createReactClass = require('create-react-class');
 
-var Transition = React.createClass({
+var Transition = createReactClass({
     getInitialState: function() {
         return {
             in: (

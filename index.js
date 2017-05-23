@@ -1,10 +1,11 @@
 var React = require('react');
 var D = React.DOM;
+var createReactClass = require('create-react-class');
 
 var Symbol = require('./symbol');
 var symbol = React.createFactory(Symbol);
 
-var TransitiveNumber = React.createClass({
+var TransitiveNumber = createReactClass({
     getDefaultProps: function() {
         return {
             className: null,

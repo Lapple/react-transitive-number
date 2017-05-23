@@ -1,11 +1,12 @@
 var React = require('react');
 var D = React.DOM;
 var findDOMNode = require('react-dom').findDOMNode
+var createReactClass = require('create-react-class');
 
 var Transition = require('./transition');
 var transition = React.createFactory(Transition);
 
-var Symbol = React.createClass({
+var Symbol = createReactClass({
     getInitialState: function() {
         return {
             previous: null,

@@ -1,13 +1,14 @@
 var React = require('react');
 var render = require('react-dom').render;
 var moment = require('moment');
+var createReactClass = require('create-react-class');
 
 var D = React.DOM;
 
 var TransitiveNumber = require('..');
 var transitiveNumber = React.createFactory(TransitiveNumber);
 
-var App = React.createClass({
+var App = createReactClass({
     getInitialState: function() {
         return {
             time: 0,
