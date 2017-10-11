@@ -1,6 +1,6 @@
 {
   "name": "react-transitive-number",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "React component to apply transition effect to numeric strings, a la old Groupon timers",
   "main": "index.js",
   "scripts": {
